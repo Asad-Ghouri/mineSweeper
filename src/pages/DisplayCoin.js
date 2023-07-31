@@ -110,10 +110,12 @@ export const DisplayCoin = () => {
       console.error("done");
       setisTransactionok(true);
       saveTokenValueToDatabase();
+      setaddfunds("");
       return true;
     } catch (error) {
       // If there's an error during the transfer, you can log it or handle it here
       console.error("Error during transfer:", error);
+      setaddfunds("");
       // Return false to indicate that the transfer was not successful
       setisTransactionok(false);
       return false;
@@ -210,6 +212,7 @@ export const DisplayCoin = () => {
                 variant="outlined"
                 className="form-input"
                 type="number"
+                value={addfunds}
                 onChange={(e) => {
                   setaddfunds(e.target.value);
                 }}

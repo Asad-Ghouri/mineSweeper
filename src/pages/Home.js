@@ -22,6 +22,7 @@ export default function Home() {
 
   const [approvebet, setapprovebet] = useState(false);
 
+  console.log("bet value is " + betammount)
   const firebaseConfig = {
     apiKey: "AIzaSyD4akvNcxkhRCrr0vsqdq7b2cXO1vXKVyQ",
     authDomain: "minesweeper-a5f1c.firebaseapp.com",
@@ -190,6 +191,7 @@ export default function Home() {
         const newGrid = checkForMine(coords);
         setGrid(newGrid);
         setGameOver(true);
+        setbetammount("")
         // setapprovebet(false);
         return;
       }
@@ -456,6 +458,7 @@ export default function Home() {
           .catch(function (error) {
             console.error("Error fetching balance:", error);
           });
+        // setbetammount("")
       }
     });
   };
@@ -528,6 +531,7 @@ export default function Home() {
                     <div className="input">
                       <input
                         type="number"
+                        value={betammount}
                         onChange={(e) => {
                           setbetammount(e.target.value);
                         }}
