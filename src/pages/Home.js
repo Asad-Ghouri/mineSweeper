@@ -163,6 +163,7 @@ export default function Home() {
   }
 
   function createMap() {
+    setapprovebet(false);
     setPlay(true);
     setGameOver(false);
     setGrid(createGrid());
@@ -188,8 +189,8 @@ export default function Home() {
       if (checkForMine(coords)) {
         const newGrid = checkForMine(coords);
         setGrid(newGrid);
-        setapprovebet(false);
         setGameOver(true);
+        // setapprovebet(false);
         return;
       }
       const setup = runSweeper(coords);
@@ -461,9 +462,53 @@ export default function Home() {
   return (
     <>
       {!address ? (
-        <div className="cwallet">
-          <ConnectWallet className="connectbtn" />
-        </div>
+        <>
+          <div className="getstarted">
+            <h3>Get Started</h3>
+            <br />
+            <p> Becoming a VIP is an easy and rewarding process</p>
+            <br />
+            <br />
+            <br />
+          </div>
+          <div className="vip-section-wrapper svelte-ogd9ct">
+            <section className="vip-section svelte-kq5ssb">
+              <div className="vip-section-icon svelte-kq5ssb">
+                <img src="https://stake.com/_app/immutable/assets/Step1.387bc52a.jpg" />
+              </div>
+              <h3 className="weight-semibold line-height-responsive align-left size-md text-size-md responsive-type-scale variant-highlighted svelte-1myjzud style-wQGHT" id="style-wQGHT">
+                Step 1
+              </h3>
+              <p className="weight-normal line-height-150pct align-left size-base text-size-base responsive-type-scale variant-subtle svelte-1myjzud style-vKp6o" id="style-vKp6o">
+                Instantly Connect Wallet and start betting on either the casino or sports book.
+              </p>
+            </section>
+            <section className="vip-section svelte-kq5ssb">
+              <div className="vip-section-icon svelte-kq5ssb">
+                <img src="https://stake.com/_app/immutable/assets/Step2.846182e2.jpg" />
+              </div>
+              <h3 className="weight-semibold line-height-responsive align-left size-md text-size-md responsive-type-scale variant-highlighted svelte-1myjzud style-mjidI" id="style-mjidI">
+                Step 2
+              </h3>
+              <p className="weight-normal line-height-150pct align-left size-base text-size-base responsive-type-scale variant-subtle svelte-1myjzud style-4Qv9p" id="style-4Qv9p">
+                Every bet counts towards your VIP progress. Reach new levels and unlock further benefits.
+              </p>
+            </section>
+            <section className="vip-section svelte-kq5ssb">
+              <div className="vip-section-icon svelte-kq5ssb">
+                <img src="https://stake.com/_app/immutable/assets/Step3.78df2edc.jpg" />
+              </div>
+              <h3 className="weight-semibold line-height-responsive align-left size-md text-size-md responsive-type-scale variant-highlighted svelte-1myjzud style-GJ57K" id="style-GJ57K">
+                Step 3
+              </h3>
+              <p className="weight-normal line-height-150pct align-left size-base text-size-base responsive-type-scale variant-subtle svelte-1myjzud style-lNzVN" id="style-lNzVN">
+                Instantly claim your bonuses. Daily, weekly and monthly bonuses are simple and easy to claim.
+              </p>
+            </section>
+          </div>
+          <div className="conbtn"> <ConnectWallet className="connectbtn" /> </div>
+        </>
+
       ) : (
         <>
           {/* <header>
@@ -476,6 +521,8 @@ export default function Home() {
             ) : (
               <div className="fullgame">
                 <div className="sidebar">
+                  <h3 className="yellow"> Auto </h3>
+                  <br />
                   <div className="betamount">
                     <p> Bet Amount </p>
                     <div className="input">

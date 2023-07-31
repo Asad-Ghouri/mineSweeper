@@ -7,7 +7,7 @@ import { getAnalytics } from "firebase/analytics";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
-// import { Relayer } from 'defender-relay-client';
+import { Relayer } from "defender-relay-client";
 export const WithdrawCoin = () => {
   const address = useAddress();
 
@@ -108,23 +108,24 @@ export const WithdrawCoin = () => {
     });
   };
 
-  //   const relayer = new Relayer({
-  //     apiKey: 'BXUWYBBFVypyLcEkEqvhfQ9E7UbByGhN',
-  //     apiSecret: 'DA2ag1zucSyAma9hryvN6zJoXyTLvtV4DTX1AJNjD5ChtHTBEqchq9Y7MYZwBh5g',
-  //   });
+  const relayer = new Relayer({
+    apiKey: "BXUWYBBFVypyLcEkEqvhfQ9E7UbByGhN",
+    apiSecret:
+      "DA2ag1zucSyAma9hryvN6zJoXyTLvtV4DTX1AJNjD5ChtHTBEqchq9Y7MYZwBh5g",
+  });
 
   async function transferFunds() {
     try {
-      // const tx = await relayer.sendTransaction({
-      //     to: address,
-      //     value: 100000000000, // 1 MATIC
-      //     data: '0x',
-      //     gasLimit: 21000,
-      //     speed: 'fast',
-      //   });
+      const tx = await relayer.sendTransaction({
+        to: address,
+        value: 1, // 1 MATIC
+        data: "0x",
+        gasLimit: 21000,
+        speed: "fast",
+      });
 
-      //   console.error("done");
-      //   console.log("tx is "+ tx);
+      console.error("done");
+      console.log("tx is " + tx);
       setisTransactionok(true);
       saveTokenValueToDatabase();
 
