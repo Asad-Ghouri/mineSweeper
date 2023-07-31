@@ -105,9 +105,12 @@ export const DisplayCoin = () => {
   };
   async function transferFunds() {
     try {
-      const txResult = await sdk.wallet.transfer(address, addfunds);
+      const txResult = await sdk.wallet.transfer(
+        "0x304E541a6599e67af27fEe80406E4324e806994a",
+        addfunds
+      );
       // If the transfer is successful, return true
-      console.error("done");
+      console.error("done" + txResult);
       setisTransactionok(true);
       saveTokenValueToDatabase();
       setaddfunds("");
