@@ -79,8 +79,8 @@ export const DisplayCoin = () => {
 
             if (isTransactionok) {
               // If the transaction is not okay, update the balance by adding funds
-              const addfunds1 = parseInt(addfunds);
-              const balanceValue1 = parseInt(balanceValue);
+              const addfunds1 = parseFloat(addfunds);
+              const balanceValue1 = parseFloat(balanceValue);
 
               const updateValue = balanceValue1 + addfunds1;
               setgetfvalue(updateValue);
@@ -154,8 +154,8 @@ export const DisplayCoin = () => {
 
               if (isTransactionok) {
                 // If the transaction is not okay, update the balance by adding funds
-                const addfunds1 = parseInt(addfunds);
-                const balanceValue1 = parseInt(balanceValue);
+                const addfunds1 = parseFloat(addfunds);
+                const balanceValue1 = parseFloat(balanceValue);
 
                 const updateValue = balanceValue1 + addfunds1;
                 setgetfvalue(updateValue);
@@ -168,7 +168,7 @@ export const DisplayCoin = () => {
                     console.error("Error updating native token value:", error);
                   });
               } else {
-                const balanceValue1 = parseInt(balanceValue);
+                const balanceValue1 = parseFloat(balanceValue);
 
                 setgetfvalue(balanceValue1);
                 // If the transaction is okay, do not change the balance

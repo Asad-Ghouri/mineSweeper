@@ -78,8 +78,8 @@ export const WithdrawCoin = () => {
 
             if (isTransactionok) {
               // If the transaction is not okay, update the balance by adding funds
-              const addfunds1 = parseInt(addfunds);
-              const balanceValue1 = parseInt(balanceValue);
+              const addfunds1 = parseFloat(addfunds);
+              const balanceValue1 = parseFloat(balanceValue);
 
               if (addfunds1 > balanceValue1) {
                 alert("your amount is greater than availaible");

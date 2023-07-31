@@ -286,7 +286,8 @@ main {
 @media (max-width:600px) {
   .sidebar {
     background: unset;
-    padding-top: 372px;
+    /* padding-top: 372px; */
+    padding-top: 412px;
     padding-left: 20%;
     z-index: -1;
   }
