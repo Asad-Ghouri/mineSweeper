@@ -14,7 +14,7 @@ export default function Cell(props) {
     >
       {props.clicked && props.isMine
         ? "💥"
-        : props.clicked && props.adjacentMines}
+        : props.clicked  && "💎"}
     </section>
   );
 }

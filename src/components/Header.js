@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../images/logo_symbol.svg"
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
-
+import NavSidebar from './NavSidebar';
 export default function Header() {
+  const [navSidebarOpen, setNavSidebarOpen] = useState(false);
+
+  const handleNavHamburgerClick = () => {
+    setNavSidebarOpen(!navSidebarOpen);
+  };
+
+  const handleNavCloseSidebar = () => {
+    setNavSidebarOpen(false);
+  };
   return (
     <>
       <header>
@@ -19,6 +28,11 @@ export default function Header() {
             <Link to="/WithdrawCoin">Withdraw Funds</Link>
             <Link to="/Referral">Add Referral</Link>
           </div>
+        </div>
+
+        <div className="nav-app">
+          <img src="https://theclubappe-asad-ghouri.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhamburger.bd56af02.png&w=96&q=75" onClick={handleNavHamburgerClick} />
+          <NavSidebar open={navSidebarOpen} onClose={handleNavCloseSidebar} />
         </div>
       </header>
 

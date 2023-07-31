@@ -96,6 +96,8 @@ export default function Home() {
   function checkForWin() {
     if (win) {
       winner();
+      console.log("inside win return is ")
+
       return win;
     }
     let count = 0;
@@ -109,6 +111,7 @@ export default function Home() {
 
     if (count === 340) {
       winner();
+      console.log("inside setwin return is ")
       setWin(true);
     }
     return win;
@@ -129,9 +132,11 @@ export default function Home() {
             x: i,
             y: j,
           },
+
           flagPlaced: false,
           swept: false,
         });
+        console.log("inside for loop ")
       }
       newGrid.push(newRow);
     }
@@ -143,12 +148,14 @@ export default function Home() {
     for (let i = 0; randomNums.length < 60; i++) {
       const newRandomNum = Math.floor(Math.random() * 400);
       if (!randomNums.includes(newRandomNum)) {
+        console.log("inside set mines ")
         randomNums.push(newRandomNum);
       }
     }
     return array.map((subArr) =>
       subArr.map((cell) => {
         if (randomNums.includes(cell.cellNum)) {
+          console.log("inside array map ")
           return {
             ...cell,
             isMine: true,
@@ -176,6 +183,7 @@ export default function Home() {
       grid.forEach((array, y) => {
         array.forEach((cell, x) => {
           if (cell.cellNum == event.target.dataset.id) {
+            console.log("inside cellClickHandle ")
             coords.x = x;
             coords.y = y;
           }
@@ -197,49 +205,61 @@ export default function Home() {
       }
       const setup = runSweeper(coords);
 
-      if (setup.adjMines === 0) {
-        console.log(setup);
-        cascadeSweep(setup.surroundingCells);
-        console.log(setup.newGrid[coords.y][coords.x]);
-        return;
-      }
+      // if (setup.adjMines === 0) {
+      //   console.log(setup);
+      //   console.log("inside setup ")
+      //   cascadeSweep(setup.surroundingCells);
+      //   console.log(setup.newGrid[coords.y][coords.x]);
+      //   return;
+      // }
       setGrid(setup.newGrid);
     }
   }
 
   function checkSurroundingCells(obj) {
     let count = 0;
+    console.log("inside checkSurroundingCells ")
     if (obj.topLeft.isMine) {
       // top left
       count++;
+      console.log("inside checkSurroundingCells 1")
+
     }
     if (obj.top.isMine) {
       // top
+      console.log("inside checkSurroundingCells 2")
       count++;
     }
     if (obj.topRight.isMine) {
       // top right
+      console.log("inside checkSurroundingCells 3")
       count++;
     }
     if (obj.left.isMine) {
       // left
       count++;
+      console.log("inside checkSurroundingCells 4")
+
     }
     if (obj.right.isMine) {
       // right
       count++;
+      console.log("inside checkSurroundingCells 5")
     }
     if (obj.bottomLeft.isMine) {
       // bottom left
       count++;
+      console.log("inside checkSurroundingCells 6")
     }
     if (obj.bottom.isMine) {
       // bottom
       count++;
+      console.log("inside checkSurroundingCells 7")
     }
     if (obj.bottomRight.isMine) {
       // bottom right
       count++;
+      console.log("inside checkSurroundingCells 7")
     }
     return count;
   }
@@ -248,6 +268,7 @@ export default function Home() {
     // check corners first
     // top-left corner only use 3 values
     if (coords.x === 0 && coords.y === 0) {
+      console.log("inside getSurroundingCells ")
       return {
         topLeft: grid.at(coords.y).at(coords.x),
         top: grid.at(coords.y).at(coords.x),
@@ -261,6 +282,7 @@ export default function Home() {
     }
     // top-right corner
     if (coords.x === 4 && coords.y === 0) {
+      console.log("inside 4 4")
       return {
         topLeft: grid.at(coords.y).at(coords.x),
         top: grid.at(coords.y).at(coords.x),
@@ -274,7 +296,10 @@ export default function Home() {
     }
     // bottom -left corner
     if (coords.x === 0 && coords.y === 4) {
+      console.log("inside 4,0 ")
+
       return {
+
         topLeft: grid.at(coords.y).at(coords.x),
         top: grid.at(coords.y - 1).at(coords.x), // here
         topRight: grid.at(coords.y - 1).at(coords.x + 1), // here
@@ -287,6 +312,7 @@ export default function Home() {
     }
     // bottom-right corner
     if (coords.x === 4 && coords.y === 4) {
+
       return {
         topLeft: grid.at(coords.y - 1).at(coords.x - 1), // here
         top: grid.at(coords.y - 1).at(coords.x), // here
@@ -524,7 +550,7 @@ export default function Home() {
             ) : (
               <div className="fullgame">
                 <div className="sidebar">
-                  <h3 className="yellow"> Auto </h3>
+                  <button className="submit-button betbtn"> Auto </button>
                   <br />
                   <div className="betamount">
                     <p> Bet Amount </p>
