@@ -11,6 +11,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
+import { type } from "os";
 
 export default function Home() {
   const [grid, setGrid] = useState([]);
@@ -22,7 +23,15 @@ export default function Home() {
 
   const [approvebet, setapprovebet] = useState(false);
 
+  const [getfvalue, setgetfvalue] = useState();
+  const [takeMoney, settakeMoney] = useState();
+  const [checktakeMoney, setchecktakeMoney] = useState();
+
+  const [incValue, setincValue] = useState(0);
+
   console.log("bet value is " + betammount)
+  console.log("takemoney value is " + takeMoney)
+
   const firebaseConfig = {
     apiKey: "AIzaSyD4akvNcxkhRCrr0vsqdq7b2cXO1vXKVyQ",
     authDomain: "minesweeper-a5f1c.firebaseapp.com",
@@ -73,7 +82,7 @@ export default function Home() {
             console.log("Current balance value:", balanceValue);
 
             // If the transaction is not okay, update the balance by adding funds
-            const balanceValue1 = parseInt(balanceValue);
+            const balanceValue1 = parseFloat(balanceValue);
 
             const updateValue = balanceValue1 + 2 * betammount;
             userRef
@@ -179,10 +188,16 @@ export default function Home() {
 
   function cellClickHandle(event) {
     if (!gameOver) {
+
       const coords = {};
       grid.forEach((array, y) => {
         array.forEach((cell, x) => {
           if (cell.cellNum == event.target.dataset.id) {
+            setincValue(prevValue => prevValue + 0.1)
+            const val = parseFloat(betammount * incValue);
+            // console.log("type of val is " + typeof (val))
+            settakeMoney(prevValue => prevValue + val);
+            // console.log("type of takemoney is " + typeof (takeMoney))
             console.log("inside cellClickHandle ")
             coords.x = x;
             coords.y = y;
@@ -198,7 +213,9 @@ export default function Home() {
       if (checkForMine(coords)) {
         const newGrid = checkForMine(coords);
         setGrid(newGrid);
+        setchecktakeMoney(false)
         setGameOver(true);
+        setincValue(0)
         setbetammount("")
         // setapprovebet(false);
         return;
@@ -439,6 +456,7 @@ export default function Home() {
   const bet = () => {
     const userRef = firebase.database().ref("users/" + address);
 
+    settakeMoney(betammount);
     userRef.once("value").then((snapshot) => {
       if (!snapshot.exists()) {
         // Wallet not found, set the balance to 0
@@ -464,12 +482,13 @@ export default function Home() {
             console.log("Current balance value:", balanceValue);
 
             // If the transaction is not okay, update the balance by adding funds
-            const balanceValue1 = parseInt(balanceValue);
+            const balanceValue1 = parseFloat(balanceValue);
 
             if (betammount > balanceValue1) {
               alert("your available balance is less");
               return;
             }
+            setchecktakeMoney(true);
             setapprovebet(true);
             const updateValue = balanceValue1 - betammount;
             userRef
@@ -488,6 +507,50 @@ export default function Home() {
       }
     });
   };
+
+  useEffect(() => {
+    const saveTokenValueToDatabase = () => {
+      const userRef = firebase.database().ref("users/" + address);
+
+      userRef.once("value").then((snapshot) => {
+        if (!snapshot.exists()) {
+          // Wallet not found, set the balance to 0
+          setgetfvalue(0);
+          userRef
+            .set({ balance: 0 })
+            .then(() => {
+              console.log(
+                "Wallet not found. Balance set to 0 in the database."
+              );
+            })
+            .catch((error) => {
+              console.error("Error setting balance to 0:", error);
+            });
+        } else {
+          // Wallet found, fetch the current balance from the database
+          const balanceRef = firebase
+            .database()
+            .ref("users/" + address + "/balance");
+
+          balanceRef
+            .once("value")
+            .then(function (snapshot) {
+              const balanceValue = snapshot.val();
+              console.log("Current balance value:", balanceValue);
+              setgetfvalue(balanceValue)
+
+            })
+            .catch(function (error) {
+              console.error("Error fetching balance:", error);
+            });
+        }
+      });
+    };
+
+    saveTokenValueToDatabase();
+  }, []);
+
+
   return (
     <>
       {!address ? (
@@ -550,7 +613,11 @@ export default function Home() {
             ) : (
               <div className="fullgame">
                 <div className="sidebar">
-                  <button className="submit-button betbtn"> Auto </button>
+                  <div className="auto">
+                    <button className="submit-button betbtn"> Auto </button>
+                    <span>Balance : {getfvalue}</span>
+                  </div>
+
                   <br />
                   <div className="betamount">
                     <p> Bet Amount </p>
@@ -568,6 +635,19 @@ export default function Home() {
                     <button onClick={bet} className="submit-button betbtn">
                       Bet
                     </button>
+                  </div>
+                  <div className="takeMoney">
+
+                    {checktakeMoney ?
+                      <>
+                        <div className="tak">
+                          <button className="submit-button betbtn"> Take Money : </button>
+                          <span>{takeMoney.toString().slice(0, 8)}</span>
+                        </div>
+                      </>
+                      :
+                      undefined
+                    }
                   </div>
                 </div>
                 {!approvebet ? (
