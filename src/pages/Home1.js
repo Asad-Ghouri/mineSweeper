@@ -26,10 +26,11 @@ export default function Home() {
   const [getfvalue, setgetfvalue] = useState();
   const [checktakeMoney, setchecktakeMoney] = useState(false);
   const [takeMoney, settakeMoney] = useState();
-  const [incValue, setincValue] = useState(0);
+  const [incValue, setincValue] = useState(0.1);
 
   const [inputdisable, setinputdisable] = useState(false);
 
+  console.log("check incValue " + incValue);
   console.log("bet value is " + betammount);
   const firebaseConfig = {
     apiKey: "AIzaSyD4akvNcxkhRCrr0vsqdq7b2cXO1vXKVyQ",
@@ -194,7 +195,7 @@ export default function Home() {
             console.log("inside cellClickHandle ");
             coords.x = x;
             coords.y = y;
-            setincValue((prevValue) => prevValue + 0.1);
+            setincValue((prevValue) => prevValue + 0.01);
             const val = parseFloat(betammount * incValue);
             console.log("type of val is " + typeof val);
             settakeMoney((prevValue) => parseFloat(prevValue) + val);
@@ -596,6 +597,42 @@ export default function Home() {
     });
   };
 
+  const maxbet = () => {
+    const userRef = firebase.database().ref("users/" + address);
+
+    userRef.once("value").then((snapshot) => {
+      if (!snapshot.exists()) {
+        // Wallet not found, set the balance to 0
+        setgetfvalue(0);
+        userRef
+          .set({ balance: 0 })
+          .then(() => {
+            console.log(
+              "Wallet not found. Balance set to 0 in the database."
+            );
+          })
+          .catch((error) => {
+            console.error("Error setting balance to 0:", error);
+          });
+      } else {
+        // Wallet found, fetch the current balance from the database
+        const balanceRef = firebase
+          .database()
+          .ref("users/" + address + "/balance");
+
+        balanceRef
+          .once("value")
+          .then(function (snapshot) {
+            const balanceValue = snapshot.val();
+            console.log("Current balance value:", balanceValue);
+            setbetammount(balanceValue);
+          })
+          .catch(function (error) {
+            console.error("Error fetching balance:", error);
+          });
+      }
+    });
+  };
   return (
     <>
       {!address ? (
@@ -682,7 +719,7 @@ export default function Home() {
               <div className="fullgame">
                 <div className="sidebar">
                   <button className="submit-button betbtn">
-                    Balance : {getfvalue}
+                    Balance : {getfvalue ? getfvalue.toString().slice(0, 8) : 0}
                   </button>
                   <div className="auto">
                     <button className="submit-button betbtn"> Auto </button>
@@ -702,9 +739,14 @@ export default function Home() {
                       <span onClick={inchalf}>1/2</span>
                       <span onClick={incdouble}>2</span>
                     </div>
-                    <button onClick={bet} className="submit-button betbtn">
-                      Bet
-                    </button>
+                    <div className="betbtns">
+                      <button onClick={bet} className="submit-button betbtn">
+                        Start
+                      </button>
+                      <button onClick={maxbet} className="submit-button betbtn">
+                        Max Bet
+                      </button>
+                    </div>
                     <div className="takeMoney">
                       {checktakeMoney ? (
                         <>
