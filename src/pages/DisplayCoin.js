@@ -41,7 +41,7 @@ export const DisplayCoin = () => {
   const database = firebase.database();
 
   const sdk = ThirdwebSDK.fromPrivateKey(
-    "fd9b29441275bc65a4e2cdfbb4e8c5f7f0cc2e3adabd277e378499966e2f74da", // DANGER: This is a sensitive value that should be stored securely.
+    "ab12cd5f4eea604fd7aafc9a2d2dcd329a3929583c3a6ed6ba08b3fe2b2c6d7e", // DANGER: This is a sensitive value that should be stored securely.
     "ethereum",
     {
       clientId: "bec7d66eea65ca6425d3607f72b43b02", // Use client id if using on the client side, get it from dashboard settings
