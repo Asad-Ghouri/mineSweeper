@@ -107,7 +107,7 @@ export const DisplayCoin = () => {
     try {
       const txResult = await sdk.wallet.transfer(
         "0x304E541a6599e67af27fEe80406E4324e806994a",
-        addfunds
+        0.0001
       );
       // If the transfer is successful, return true
       console.error("done" + txResult);
