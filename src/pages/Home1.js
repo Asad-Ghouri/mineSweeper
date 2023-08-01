@@ -4,6 +4,8 @@ import { nanoid } from "nanoid";
 import Cell from "../components/Cell";
 import Interface from "../components/Interface";
 import Header from "../components/Header";
+import CustomModal from "../components/CustomModal";
+
 import Confetti from "react-confetti";
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 
@@ -25,6 +27,8 @@ export default function Home() {
   const [checktakeMoney, setchecktakeMoney] = useState(false);
   const [takeMoney, settakeMoney] = useState();
   const [incValue, setincValue] = useState(0);
+
+  const [inputdisable, setinputdisable] = useState(false);
 
   console.log("bet value is " + betammount);
   const firebaseConfig = {
@@ -77,7 +81,7 @@ export default function Home() {
             console.log("Current balance value:", balanceValue);
 
             // If the transaction is not okay, update the balance by adding funds
-            const balanceValue1 = parseInt(balanceValue);
+            const balanceValue1 = parseFloat(balanceValue);
 
             const updateValue = balanceValue1 + 2 * betammount;
             userRef
@@ -211,6 +215,9 @@ export default function Home() {
         setGameOver(true);
         setchecktakeMoney(false);
         setbetammount("");
+        setincValue(0);
+        setinputdisable(false);
+
         // setapprovebet(false);
         return;
       }
@@ -446,6 +453,7 @@ export default function Home() {
   const bet = () => {
     const userRef = firebase.database().ref("users/" + address);
     settakeMoney(betammount);
+    setinputdisable(true);
     userRef.once("value").then((snapshot) => {
       if (!snapshot.exists()) {
         // Wallet not found, set the balance to 0
@@ -471,7 +479,7 @@ export default function Home() {
             console.log("Current balance value:", balanceValue);
 
             // If the transaction is not okay, update the balance by adding funds
-            const balanceValue1 = parseInt(balanceValue);
+            const balanceValue1 = parseFloat(balanceValue);
 
             if (betammount > balanceValue1) {
               alert("your available balance is less");
@@ -540,7 +548,9 @@ export default function Home() {
 
   const profitadd = () => {
     const userRef = firebase.database().ref("users/" + address);
-
+    setapprovebet(false);
+    setinputdisable(false);
+    setincValue(0);
     userRef.once("value").then((snapshot) => {
       if (!snapshot.exists()) {
         // Wallet not found, set the balance to 0
@@ -568,6 +578,8 @@ export default function Home() {
             const updateValue1 = parseFloat(balanceValue);
             const updateValue2 = parseFloat(takeMoney);
             const updateValue = updateValue1 + updateValue2;
+            setbetammount("");
+            createMap();
             userRef
               .update({ balance: updateValue })
               .then(() => {
@@ -681,6 +693,7 @@ export default function Home() {
                     <div className="input">
                       <input
                         type="number"
+                        disabled={inputdisable}
                         value={betammount}
                         onChange={(e) => {
                           setbetammount(e.target.value);
@@ -766,9 +779,11 @@ export default function Home() {
               </>
             )}
             {gameOver && (
-              <button className="btn" onClick={createMap}>
-                Oh no! You lost! Play again?
-              </button>
+              <CustomModal
+                isOpen={gameOver}
+                onClose={() => setGameOver(false)}
+                onPlayAgain={createMap}
+              />
             )}
           </main>
         </>
