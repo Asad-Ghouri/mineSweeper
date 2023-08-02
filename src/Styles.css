@@ -1012,3 +1012,7 @@ ul li {
 .betbtns button{
   margin-right: 1rem;
 }
+
+.logo-bg-sm{
+  display: none!important;
+}

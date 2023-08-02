@@ -6,6 +6,7 @@ import Interface from "../components/Interface";
 import Header from "../components/Header";
 import CustomModal from "../components/CustomModal";
 
+// import Now4RealWidget from "../components/Now4RealWidget";
 import Confetti from "react-confetti";
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 
@@ -607,9 +608,7 @@ export default function Home() {
         userRef
           .set({ balance: 0 })
           .then(() => {
-            console.log(
-              "Wallet not found. Balance set to 0 in the database."
-            );
+            console.log("Wallet not found. Balance set to 0 in the database.");
           })
           .catch((error) => {
             console.error("Error setting balance to 0:", error);
@@ -637,6 +636,7 @@ export default function Home() {
     <>
       {!address ? (
         <>
+          {/* <Now4RealWidget /> */}
           <div className="getstarted">
             <h3>Get Started</h3>
             <br />
@@ -712,6 +712,7 @@ export default function Home() {
       <p>Use CTRL-click to set a flag 🚩</p>
     </header> */}
           <Header />
+          {/* <Now4RealWidget /> */}
           <main>
             {!play ? (
               <Interface handleClick={createMap} id="create-table" />
