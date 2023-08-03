@@ -1,6 +1,5 @@
 ![Captureq](https://github.com/Asad-Ghouri/mineSweeper/assets/84624564/f81a7147-95d9-4fda-8deb-a6578855c4ff)
-![Uploading Capture5.PNG…]()
-![Uploading Capture4.PNG…]()
+
 ## Getting Started
 
 Create a project using this example:
@@ -35,8 +34,11 @@ To learn more about thirdweb, React and CRA, take a look at the following resour
 - [React documentation](https://reactjs.org/) - learn React.
 
 You can check out [the thirdweb GitHub organization](https://github.com/thirdweb-dev) - your feedback and contributions are welcome!
-![Uploading Capture2.PNG…]()
-![Uploading Capture.PNG…]()
+![Capture2](https://github.com/Asad-Ghouri/mineSweeper/assets/84624564/6a2bdfd6-7946-4038-8fa2-936175fbc471)
+![Capture](https://github.com/Asad-Ghouri/mineSweeper/assets/84624564/c64e5a18-37fb-499d-adb5-b41bfd1a74da)
+![Capture5](https://github.com/Asad-Ghouri/mineSweeper/assets/84624564/07229935-f005-421e-90d7-a5df83ec9262)
+![Capture4](https://github.com/Asad-Ghouri/mineSweeper/assets/84624564/fb6f6d37-aace-4dff-a1ee-1e1f31893eab)
+
 
 ## Join our Discord!
 
