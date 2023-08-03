@@ -204,7 +204,7 @@ export const DisplayCoin = () => {
             </p>
           </div>
         </div>
-        <div className="container">
+        <div className="container wcontainer">
           <form className="form-container">
             <div>
               <input
