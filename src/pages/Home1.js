@@ -641,10 +641,6 @@ export default function Home() {
         <>
           <Header1 />
           <WithoutConnect />
-          {/* <div className="conbtn">
-            {" "}
-            <ConnectWallet className="connectbtn" />{" "}
-          </div> */}
         </>
       ) : (
         <>
