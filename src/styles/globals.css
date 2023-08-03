@@ -29,3 +29,7 @@ a {
   display: hidden!important;
 
 }
+
+button{
+  font-family: ModernTetris;
+}

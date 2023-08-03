@@ -156,16 +156,16 @@ export const WithdrawCoin = () => {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container wcontainer">
           <form className="form-container">
-            <div>
+            <div class="input-container">
               <input
                 required
                 id="name"
                 label="Name"
                 placeholder="Enter your amount"
                 variant="outlined"
-                className="form-input"
+                className="form-input Rinput"
                 type="number"
                 value={addfunds}
                 onChange={(e) => {
