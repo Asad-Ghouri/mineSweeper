@@ -1,3 +1,6 @@
+![Captureq](https://github.com/Asad-Ghouri/mineSweeper/assets/84624564/f81a7147-95d9-4fda-8deb-a6578855c4ff)
+![Uploading Capture5.PNG…]()
+![Uploading Capture4.PNG…]()
 ## Getting Started
 
 Create a project using this example:
@@ -32,6 +35,8 @@ To learn more about thirdweb, React and CRA, take a look at the following resour
 - [React documentation](https://reactjs.org/) - learn React.
 
 You can check out [the thirdweb GitHub organization](https://github.com/thirdweb-dev) - your feedback and contributions are welcome!
+![Uploading Capture2.PNG…]()
+![Uploading Capture.PNG…]()
 
 ## Join our Discord!
 
