@@ -23,6 +23,7 @@ export default function Header1() {
           <div className="headCbtn">
             {" "}
             <ConnectWallet className="" />{" "}
+            <Link to="/Cryptomines">Cryptomines</Link>
           </div>
           <div className="links">
             {/* <ConnectWallet className="" /> */}
