@@ -29,12 +29,30 @@ export const WithoutConnect = () => {
                             </span>
                         </div>
                     </div>
+
+                    <div className="parMain">
+                        <div className="relative inline-flex xl:flex-row lg:flex-row flex-col justify-stretch items-stretch border-paper border-8 g2 gradient p-3 shadow-shadow rounded-md shadow-xl">
+                            <span className="inline-flex flex-col relative container mx-auto gap-5 flex-1 p-8">
+                                <div className="absolute top-0 right-0 bottom-0 left-[50%] h-full z-10 -translate-x-[50%] w-full flex flex-row justify-center items-center flex-wrap overflow-hidden">
+                                    <div></div>
+                                </div>
+                                <h4 className="font-heading text-3xl text-text z-50 backdrop-blur-lg p-3 rounded">
+                                    To play
+                                </h4>
+                                <p className="font-body xl:text-4xl lg:text-4xl text-2xl text-text z-50 text-center backdrop-blur-lg rounded">
+                                    Place your bet in ETH and click the play button. Every tile
+                                    flipped over that isn't a mine will add to your winnings, and
+                                    a mine will end the game. Cash out at any time, or try to
+                                    clear the board if you dare. GOOD LUCK
+                                </p>
+                            </span>
+                        </div>
+                    </div>
                     <div className="conbtn">
                         {" "}
                         <ConnectWallet className="connectbtn" />{" "}
                     </div>
-
-
+                    <br />
 
                 </div>
 

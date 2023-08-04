@@ -1,9 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
+import Header1 from "../components/Header1";
+import { useAddress } from "@thirdweb-dev/react";
 export const Cryptomines = () => {
+  const address = useAddress();
   return (
     <div>
-      <Header />
+      {address ? <Header /> : <Header1 />}
       <div className="bg1">
         <div className="bg2">
           <div className="parMain">
