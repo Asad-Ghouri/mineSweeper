@@ -30,7 +30,7 @@ export default function Header() {
             <Link to="/DisplayCoin">Add Funds</Link>
             <Link to="/WithdrawCoin">Withdraw Funds</Link>
             <Link to="/Referral">Add Referral</Link>
-            <Link to="/Cryptomines">Cryptomines</Link>
+            <Link to="/Cryptomines">TOKENOMICS</Link>
           </div>
         </div>
 

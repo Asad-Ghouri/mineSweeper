@@ -802,6 +802,7 @@ p.text-size-base.responsive-type-scale.svelte-1myjzud {
   float: left;
   padding-top: 10px;
   padding-left: 10px;
+  display: flex;
 }
 
 .logo img {
@@ -1768,6 +1769,7 @@ h4 {
 .text-text { 
   --tw-text-opacity: 1; 
   color: rgb(255 255 255/var(--tw-text-opacity));
+  z-index: 0;
 } 
 
 .backdrop-blur-lg { 
@@ -2191,6 +2193,12 @@ img {
   .links{
     display: none;
   }
+  .d-n{
+    display: none;
+  }
+  .logotext{
+    font-size: 21px;
+  }
   .bg1{
     background-position-x: 2%;
     background-position-y: -3%;
@@ -2258,4 +2266,7 @@ height: 100vh;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+}
+.toki{
+  padding-right: 10px;
 }
