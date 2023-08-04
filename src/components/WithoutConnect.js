@@ -8,6 +8,13 @@ import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 export const WithoutConnect = () => {
     return (
         <>
+            <br />
+            <br />
+            <center>
+                <h1 className="font-heading text-3xl text-text z-50 backdrop-blur-lg p-3 rounded">
+                    Crypto Mines
+                </h1>
+            </center>
             <div className="bg1 wc">
                 <div className="bg2 wc">
 
