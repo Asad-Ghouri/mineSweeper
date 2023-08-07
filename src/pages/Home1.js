@@ -667,6 +667,7 @@ export default function Home() {
                     <div className="input">
                       <input
                         type="number"
+                        min={0}
                         disabled={inputdisable}
                         value={betammount}
                         onChange={(e) => {
