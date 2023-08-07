@@ -301,6 +301,9 @@ main {
     height: 53px;
     width: 53px;
   }
+  .headCbtn{
+    display: none;
+  }
 }
 
 @media (min-width:600px) {
@@ -894,7 +897,7 @@ ul li {
     display: none;
   }
   header{
-    padding-bottom: 0;
+    /* padding-bottom: 0; */
   }
   .nav-app {
     display: flex;
@@ -2273,4 +2276,15 @@ height: 100vh;
 
 .align{
   align-items: center;
+}
+
+.logoImg{
+  position: absolute;
+  width: 90px!important;
+  top: -6px;
+}
+@media (min-width:600px) {
+  .logoImgh{
+    top: 0px;
+  }
 }

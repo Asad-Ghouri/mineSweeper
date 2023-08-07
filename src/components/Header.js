@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Logo from "../images/logo_symbol.svg";
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import NavSidebar from "./NavSidebar";
+import logo from "../images/logo.png";
+
 export default function Header() {
   const [navSidebarOpen, setNavSidebarOpen] = useState(false);
 
@@ -20,9 +22,10 @@ export default function Header() {
           <img src={Logo} alt="" />
           <center>
             <Link to="/">
-              <h1 className="font-heading text-3xl text-text z-50 backdrop-blur-lg p-3 rounded logotext">
+              {/* <h1 className="font-heading text-3xl text-text z-50 backdrop-blur-lg p-3 rounded logotext">
                 Crypto Mines
-              </h1>
+              </h1> */}
+              <img src={logo} alt="" className="logoImg logoImgh" />
             </Link>
           </center>
         </div>
