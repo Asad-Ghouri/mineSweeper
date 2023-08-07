@@ -2270,3 +2270,7 @@ height: 100vh;
 .toki{
   padding-right: 10px;
 }
+
+.align{
+  align-items: center;
+}

@@ -18,6 +18,13 @@ export default function Header() {
       <header>
         <div className="logo">
           <img src={Logo} alt="" />
+          <center>
+            <Link to="/">
+              <h1 className="font-heading text-3xl text-text z-50 backdrop-blur-lg p-3 rounded logotext">
+                Crypto Mines
+              </h1>
+            </Link>
+          </center>
         </div>
         <div className="flex">
           <div className="headCbtn">
