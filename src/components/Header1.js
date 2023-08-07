@@ -26,7 +26,7 @@ export default function Header1() {
             </Link>
           </center>
         </div>
-        <div className="flex d-n">
+        <div className="flex d-n align">
           <div className="headCbtn">
             {" "}
             <Link to="/" className="toki">
