@@ -29,7 +29,7 @@ export default function Cell(props) {
       className="cell"
       style={styles}
     >
-      {props.clicked && props.isMine ? "💥" : props.clicked && "💎"}
+      {props.clicked && props.isMine ? "💥" : props.clicked && "💠"}
     </section>
   );
 }
