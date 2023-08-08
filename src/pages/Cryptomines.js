@@ -98,7 +98,8 @@ export const Cryptomines = () => {
                     </span>
                     <p className="font-heading text-text text-2xl">TWITTER</p>
                   </a>
-                  <a
+
+                  {/* <a
                     className="flex flex-col hover:bg-secondary justify-center items-center h-40 w-40"
                     href="https://www.lbank.com/en-US/trade/tetris_usdt/"
                   >
@@ -117,8 +118,8 @@ export const Cryptomines = () => {
                       />
                     </span>
                     <p className="font-heading text-text text-2xl">L BANK</p>
-                  </a>
-                  <a
+                  </a> */}
+                  {/* <a
                     className="flex flex-col hover:bg-secondary justify-center items-center h-40 w-40"
                     href="https://www.coingecko.com/en/coins/tetris"
                   >
@@ -139,7 +140,7 @@ export const Cryptomines = () => {
                     <p className="font-heading text-text text-2xl">
                       COIN GECKO
                     </p>
-                  </a>
+                  </a> */}
                   <a
                     className="flex flex-col hover:bg-secondary justify-center items-center h-40 w-40"
                     href="https://www.dextools.io/app/en/ether/pair-explorer/0xCb8a95e76A16b58C30B01e39Dd6AAD5949E5E802"
