@@ -2184,7 +2184,7 @@ img {
   background-image: url(./images/bg2.png);
   background-repeat: no-repeat;
   background-position-x: 111%;
-  background-position-y: 30%;
+  /* background-position-y: 30%; */
 }
 
 .wcontainer{

@@ -18,7 +18,7 @@ export default function Header1() {
     <>
       <header>
         <div className="logo">
-          <img src={Logo} alt="" />
+          {/* <img src={Logo} alt="" /> */}
           <center>
             <Link to="/">
               {/* <h1 className="font-heading text-3xl text-text z-50 backdrop-blur-lg p-3 rounded logotext">
