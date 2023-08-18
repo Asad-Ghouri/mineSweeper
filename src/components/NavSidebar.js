@@ -26,6 +26,10 @@ const NavSidebar = ({ open, onClose }) => {
         <li className="nav-link">
           <Link to="/Cryptomines">TOKENOMICS</Link>
         </li>
+        <li className="nav-link">
+        <Link to="#">P2P</Link>
+        </li>
+
       </ul>
     </div>
   );

@@ -109,9 +109,9 @@ export const WithdrawCoin = () => {
   };
 
   const relayer = new Relayer({
-    apiKey: "BXUWYBBFVypyLcEkEqvhfQ9E7UbByGhN",
+    apiKey: "F6tzroxxmwLp8AgGdh4MpgU9TbH5jMVx",
     apiSecret:
-      "DA2ag1zucSyAma9hryvN6zJoXyTLvtV4DTX1AJNjD5ChtHTBEqchq9Y7MYZwBh5g",
+      "JBrVMtN2YkDzdHTtAJHsDzzhDH1ZRe6c2VKucqAkyaVXoNwufj4knPMhjbr7iZ1V",
   });
 
   async function transferFunds() {
