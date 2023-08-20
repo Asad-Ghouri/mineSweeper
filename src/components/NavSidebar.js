@@ -27,7 +27,7 @@ const NavSidebar = ({ open, onClose }) => {
           <Link to="/Cryptomines">TOKENOMICS</Link>
         </li>
         <li className="nav-link">
-        <Link to="#">P2P</Link>
+        <Link to="/pvp">PvP</Link>
         </li>
 
       </ul>

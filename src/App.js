@@ -6,6 +6,7 @@ import { Referral } from "./pages/Referral";
 import { Cryptomines } from "./pages/Cryptomines";
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import { Route, Routes } from "react-router-dom";
+import {Pvp }from "./pages/Pvp"
 
 export default function App() {
   const address = useAddress;
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/WithdrawCoin" element={<WithdrawCoin />} />
             <Route path="/Referral" element={<Referral />} />
             <Route path="/Cryptomines" element={<Cryptomines />} />
+            <Route path="/pvp" element={<Pvp  />} />
           </Routes>
         </>
       )}

@@ -41,7 +41,7 @@ export default function Header() {
             <Link to="/WithdrawCoin">Withdraw Funds</Link>
             <Link to="/Referral">Add Referral</Link>
             <Link to="/Cryptomines">TOKENOMICS</Link>
-            <Link to="#">P2P</Link>
+            <Link to="/pvp">PvP</Link>
           </div>
         </div>
 

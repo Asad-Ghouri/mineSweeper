@@ -2288,3 +2288,17 @@ height: 100vh;
     top: 0px;
   }
 }
+
+.comingsoon{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width:600px) {
+  .comingsoon{
+      font-size: 30px!important;
+   } 
+}
