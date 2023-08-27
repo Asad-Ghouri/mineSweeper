@@ -41,6 +41,7 @@ export const DisplayCoin = () => {
   const database = firebase.database();
 
   const sdk = useSDK();
+
   const saveTokenValueToDatabase = () => {
     const userRef = firebase.database().ref("users/" + address);
 
@@ -68,7 +69,7 @@ export const DisplayCoin = () => {
             const balanceValue = snapshot.val();
             console.log("Current balance value:", balanceValue);
 
-            if (isTransactionok) {
+            if (!isTransactionok) {
               // If the transaction is not okay, update the balance by adding funds
               const addfunds1 = parseFloat(addfunds);
               const balanceValue1 = parseFloat(balanceValue);
@@ -83,7 +84,8 @@ export const DisplayCoin = () => {
                 .catch((error) => {
                   console.error("Error updating native token value:", error);
                 });
-            } else {
+            } 
+            else {
               // If the transaction is okay, do not change the balance
               console.log("Transaction is okay. Balance remains unchanged.");
             }
@@ -104,14 +106,14 @@ export const DisplayCoin = () => {
       console.error("done" + txResult);
       setisTransactionok(true);
       saveTokenValueToDatabase();
-      setaddfunds("");
+      // setaddfunds("");
       return true;
     } catch (error) {
       // If there's an error during the transfer, you can log it or handle it here
       console.error("Error during transfer:", error);
-      setaddfunds("");
+      // setaddfunds("");
       // Return false to indicate that the transfer was not successful
-      setisTransactionok(false);
+      // setisTransactionok(false);
       return false;
     }
   }
