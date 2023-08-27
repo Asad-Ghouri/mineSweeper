@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
-import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
+import { ConnectWallet, useAddress,useSDK } from "@thirdweb-dev/react";
 import { useBalance } from "@thirdweb-dev/react";
 import Header from "../components/Header";
 
@@ -40,16 +40,7 @@ export const DisplayCoin = () => {
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
 
-  const sdk = ThirdwebSDK.fromPrivateKey(
-    "ab12cd5f4eea604fd7aafc9a2d2dcd329a3929583c3a6ed6ba08b3fe2b2c6d7e", // DANGER: This is a sensitive value that should be stored securely.
-    "ethereum",
-    {
-      clientId: "bec7d66eea65ca6425d3607f72b43b02", // Use client id if using on the client side, get it from dashboard settings
-      secretKey:
-        "TKA9WkIgDA69bKcApP8I6Iqby7aeEjdZLYCWpa0ELJagAroh7x2l_DszqI-iz2oCvjHrz6UHG7QqVDVVqeWe9g", // Use secret key if using on the server, get it from dashboard settings
-    }
-  );
-
+  const sdk = useSDK();
   const saveTokenValueToDatabase = () => {
     const userRef = firebase.database().ref("users/" + address);
 
@@ -107,8 +98,7 @@ export const DisplayCoin = () => {
     try {
       const txResult = await sdk.wallet.transfer(
         "0x304E541a6599e67af27fEe80406E4324e806994a",
-        0.0001,
-        "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+        addfunds,
       );
       // If the transfer is successful, return true
       console.error("done" + txResult);

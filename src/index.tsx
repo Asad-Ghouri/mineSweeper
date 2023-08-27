@@ -6,7 +6,7 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 import "./styles/globals.css";
 import "./Styles.css";
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import {ethers} from "ethers"
 // This is the chain your dApp will work on.
 // Change this to the chain your app is built for.
 // You can also import additional chains from `@thirdweb-dev/chains` and pass them directly.
@@ -16,7 +16,11 @@ const container = document.getElementById("root");
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>
-    <ThirdwebProvider activeChain={activeChain}>
+    <ThirdwebProvider
+      activeChain={"goerli"}
+          // Example: Use ethers to get the signer from the window.ethereum object
+        signer={new ethers.providers.Web3Provider(window.ethereum).getSigner()}
+    >
       <Router>
       <App />
       </Router>
