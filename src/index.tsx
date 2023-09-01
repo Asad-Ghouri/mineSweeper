@@ -17,9 +17,9 @@ const root = createRoot(container!);
 root.render(
   <React.StrictMode>
     <ThirdwebProvider
-      activeChain={"ethereum"}
+      // activeChain={"ethereum"}
           // Example: Use ethers to get the signer from the window.ethereum object
-        signer={new ethers.providers.Web3Provider(window.ethereum).getSigner()}
+        // signer={new ethers.providers.Web3Provider(window.ethereum).getSigner()}
     >
       <Router>
       <App />

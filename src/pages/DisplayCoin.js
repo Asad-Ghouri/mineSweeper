@@ -9,6 +9,8 @@ import { getAnalytics } from "firebase/analytics";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
+import { Web3Button } from "@thirdweb-dev/react";
+
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 
 export const DisplayCoin = () => {
@@ -97,6 +99,7 @@ export const DisplayCoin = () => {
     });
   };
   async function transferFunds() {
+    
     try {
       const txResult = await sdk.wallet.transfer(
         "0x304E541a6599e67af27fEe80406E4324e806994a",
@@ -111,6 +114,7 @@ export const DisplayCoin = () => {
     } catch (error) {
       // If there's an error during the transfer, you can log it or handle it here
       console.error("Error during transfer:", error);
+      alert("You have Insufficient balance")
       // setaddfunds("");
       // Return false to indicate that the transfer was not successful
       // setisTransactionok(false);
@@ -219,6 +223,7 @@ export const DisplayCoin = () => {
             <button onClick={transferFunds} className="submit-button">
               Add Funds
             </button>
+            
           </div>
         </div>
       </div>
